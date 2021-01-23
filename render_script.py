@@ -13,7 +13,7 @@ except:
     np = None
 
 import sys
-sys.path.insert(1, './')
+sys.path.insert(1, '/content/Swirski_Eye')
 
 from set_Swirski_config import *
 
@@ -47,12 +47,11 @@ def enable_gpus(device_type, use_cpus=False):
     return activated_gpus
 
 
-enable_gpus("CUDA")
+gpus = enable_gpus("CUDA")
+print(gpus)
 
 engines = ('BLENDER_EEVEE', 'CYCLES')
 engine_chosen = engines[1]
-# path_dir = "/home/twv0888/www//"
-bpy.context.scene.render.filepath = path_dir 
 bpy.context.scene.render.engine = engine_chosen
 
 
@@ -73,8 +72,9 @@ closedness = np.abs(np.random.normal(0, 0.25, dim* dim))
 for i in range(1):
     for j in range(1):
         input_eye_closedness = 0
-        set_Swirski_config(elev[i][j], azim[i][j], input_eye_closedness, "/content/496-free-hdri-skies-com.jpg")
-        bpy.context.scene.render.filepath = "/context/test.png"
+        pattern_path =  "/content/Swirski_Eye/496-free-hdri-skies-com.jpg"
+        set_Swirski_config(elev[i][j], azim[i][j], input_eye_closedness, pattern_path)
+        bpy.context.scene.render.filepath = "/content/test.png"
         bpy.ops.render.render(write_still=True)
 
 

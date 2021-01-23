@@ -33,7 +33,6 @@ def rotate_eye(obj, x_angle, z_angle):
 
 
 def set_Swirski_config(elev, azim, clo, pattern_path):
-    print("hello")
     z_angle = -azim
     x_angle = -elev
     outer_eye = bpy.data.collections["Collection 1"].objects['eye-outer']
@@ -49,7 +48,7 @@ def set_Swirski_config(elev, azim, clo, pattern_path):
     eyeRbone = armature.pose.bones['def_eye.R']
     eyeRblinkbone = armature.pose.bones['eyeblink.R']
 
-    input_eye_closedness = 0
+    input_eye_closedness = clo
 
     plane  = bpy.data.objects['Plane']
 
